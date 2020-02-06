@@ -9,5 +9,5 @@
 
 
 function descendingOrder(n){
-  return parseInt([...n + ''].sort(Number).join(''))
+  return parseInt([...n + ''].sort().reverse().join(''))
 }
