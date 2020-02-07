@@ -1,0 +1,71 @@
+//code challenges
+
+
+const countDigits = (n, digit) => {
+    /*Return the number of times digit appears in the squares of the sequence 1..n.
+    
+    //create an array, filter inculdes(digit)
+
+    Example:
+        count_digits(10, 1) = 4
+        # 1, 2, 3, 4, ..., 9, 10 --> 1, 4, 9, 16, ..., 81, 100
+    */
+  
+  const array = [];
+  for (let i = 1; i <= n; i++) {
+    array.push(i);
+  };
+  const count_digit = array.filter(num => {
+      return (num * num).toString().includes(digit);
+  });
+      return count_digit.length;
+};
+
+console.log(countDigits(10, 1), ' = 4')
+
+
+const balancedNum = (n) => {
+    /*Return 'Balanced' if `n` is a 'balanced' number, otherwise 'Not Balanced'.
+    //return a ternary for the logic of n
+
+    Balanced number: a number that if reversed, equals itself.
+    
+    
+    Examples of balanced numbers:
+        1
+        121
+        12321
+    */
+  
+    const condition = n === parseInt([...n + ''].reverse().join('')) ? 'balanced' : 'Not Balanced';
+    return condition;
+}
+console.log(balancedNum(1), '= balanced')
+console.log(balancedNum(123), '= Not Balanced')
+console.log(balancedNum(12321), '= balanced')
+
+
+
+const evenWeights = (numbers) => {
+    /*Return True if the count of the even members of `numbers` add up to the count
+    of the odd members, otherwise return False.
+
+    Example:
+        1, 1         ->   False
+        1, 2, 2, 1   ->   True
+        1, 1, 2      ->   False
+
+    */
+
+   const odd = numbers.reduce((x, y) => {
+     return x + y % 2;
+   });
+  
+   const even = numbers.length - odd;
+   return odd === even;
+}
+
+console.log(evenWeights([1,1]), ' = false')
+console.log(evenWeights([1,2,4,1]), ' = true')
+console.log(evenWeights([1,2,2]), ' = false')
+console.log(evenWeights([1,2,2,4,5,5]), ' = true')
